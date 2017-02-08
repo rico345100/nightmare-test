@@ -1,0 +1,29 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1>Join Complete</h1>
+	<div>Result:
+		<div id="result"></div>
+	</div>
+
+	<script>
+		var urlParser = document.createElement('a');
+		urlParser.href = location.href;
+
+		var serializedQs = urlParser.search.slice(1).split('&');
+		var qs = {};
+
+		for(var i = 0; i < serializedQs.length; i++) {
+			var queryItem = serializedQs[i].split('=');
+			if(queryItem.length > 0) {
+				qs[queryItem[0]] = queryItem[1];
+			}
+		}
+
+		document.querySelector('#result').innerText = JSON.stringify(qs);
+	</script>
+</body>
+</html>
